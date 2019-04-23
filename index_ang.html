@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="HotSaleApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Nespresso - Promociones Exclusivas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7" />
+  <!-- Estilos ECommerce Nespresso -->
+  <link href="css/ec-hot-sale.css" rel="stylesheet">
+</head>
+
+<body class="ec-grid" ng-controller="HotSaleController">
+<!-- Imagen principal -->
+    <header class="ec-header">
+        <div class="ec-container">
+        </div>
+    </header>
+    <!-- Cierre de imagen principal -->
+
+    <!-- Contenedor principal -->
+    <div class="ec-container">
+        <!-- Counter -->   
+        <section class="my-4">
+            <div class="row text-center ec_counter d-flex justify-content-center">
+                <div class="col-sm-3 align-self-center">
+                    <span>QUEDAN</span>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row d-flex justify-content-between">
+                        <div class="col-3">
+                            <p id="days"></p>
+                            <span class="ec_label">Días</span>
+                        </div>
+                        <div class="col-3">
+                            <p id="hours"></p>
+                            <span class="ec_label">Horas</span>
+                        </div>
+                        <div class="col-3">
+                            <p id="min"></p>
+                            <span class="ec_label">Minutos</span>
+                        </div>
+                        <div class="col-3">
+                            <p id="sec"></p>
+                            <span class="ec_label">Segundos</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 align-self-center">
+                    <span>DE BENEFICIOS</span>
+                </div>
+            </div>
+        </section>
+        <!-- Cierre de counter -->  
+        
+        <!-- Texto principal -->  
+        <section class="my-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-xs-12 col-sm-8  text-center">
+                    <h2>Comprá tu máquina con <span class="ec-main-color ec-weight-bold">40% OFF</span> y recibí hasta <span class="ec-main-color ec-weight-bold">$1.300</span> de crédito en café</h2>
+                </div>
+            </div>
+        </section>
+        <!-- Cierre de texto principal --> 
+        <hr class="my-4">
+        <!-- Carrousel de Maquinas --> 
+        <section class="my-5">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="d-flex justify-content-start align-items-center">
+                <h2 class="mr-2">Maquinas</h2>
+                <ul class="nav nav-tabs" id="tabMaquinas" role="tablist">
+                    <li class="nav-item" ng-repeat="unaMaquina in maquinas">
+                        <a class="nav-link" ng-class="($index == maquinaVisible) ? 'active' : ''" ng-click="mostrarMaquina($index)">{{ unaMaquina.nombre }}</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="maquinas">
+            <div class="col-xs-12 col-sm-6 text-center">
+                <img ng-src="{{ getFotoDePortada().urlFoto }}" alt="{{ getFotoDePortada().altFoto }}" class="img-fluid">
+            </div>
+            <div class="col-xs-12 col-sm-6 align-self-center">
+                <h2 class="ec-weight-bold ">{{ maquinas[maquinaVisible].nombre }}</h2>
+                <ul class="mt-2 colorpicker d-flex align-items-center">
+                    <li>Colores disponibles: </li>
+                    <li ng-repeat="unColor in maquinas[maquinaVisible].colores">
+                        <a class="{{ unColor.nombreColor }}" ng-click="elegirColor($index)"></a>
+                    </li>
+                </ul>
+                <hr class="my-3">
+                <p class="mb-2"><span class="d-block ec-weight-bold">ENVÍO GRATUITO</span> {{ maquinas[maquinaVisible].cantCuotas }} CUOTAS sin interés de ${{ calcularCuotas(maquinas[maquinaVisible].valorMaquina, maquinas[maquinaVisible].cantCuotas) }}</p>
+                <p><span class="d-block">Con tu compra obtené</span> <span class="font-italic">{{ maquinas[maquinaVisible].credito }} DE CRÉDITO</span> en café.</p>
+                <hr class="my-3">
+                <div class="d-flex justify-content-start align-items-center align-items-stretch my-3">
+                    <div class="align-self-center mr-2">
+                        <p>Precio anterior: <span class="ec-pastPrice d-block">${{ maquinas[maquinaVisible].precioAnterior }}</span></p>
+                    </div>
+                    <div class="ec-vertical-line mx-2">
+                    </div>
+                    <div class="ec-price mx-2">
+                        <p class="ec-text-white">ARS <span class="ec-priceNumber">${{ formatearNumero(maquinas[maquinaVisible].valorMaquina) }}</span></p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-end">
+                    <a class="ec-boton mr-2" ng-click="mostrarModal(maquinaVisible,false)">Más información</a>
+                    <input type="hidden" id="{{ maquinas[maquinaVisible].colores[colorSeleccionado].ctaCode }}" name="{{ maquinas[maquinaVisible].colores[colorSeleccionado].ctaCode }}" value="0">
+                </div>
+            </div>
+        </div>
+        </section>
+        <!-- Cierre de Maquinas --> 
+    </div>
+    <!-- Modulo completo de Accedo a mi Crédito --> 
+    <section class="container-fluid ec-gradientBG">
+        <div class="row">
+            <div class="col-12 text-center my-5">
+                <h3>¿CÓMO ACCEDO A MI CRÉDITO?</h3>
+            </div>
+            <div class="col-12">
+                <div class="ec-elipseBase text-center d-flex justify-content-center flex-column flex-sm-row align-items-center">
+                    <div class="ec-cuerpoElipse d-flex flex-column justify-content-center my-3 my-sm-0">
+                        <span class="ec-stepNumber ec-weight-bold">1</span>
+                        <p class="mb-3"><span class="ec-weight-bold d-block">Elegí</span> tu máquina</p> <img src="images/icons/icElegiMaquina.png" alt="Elegí tu máquina" class="img-fluid align-self-center">
+                    </div>
+                    <div class="d-flex align-items-center mx-4 my-3 my-sm-0">
+                        <hr class="ec-stepsSeparador">
+                    </div>
+                    <div class="ec-cuerpoElipse d-flex flex-column justify-content-center my-3 my-sm-0">
+                        <span class="ec-stepNumber ec-weight-bold">2</span>
+                        <p class="mb-3"><span class="ec-weight-bold d-block">Agregá</span> tus cápsulas</p> <img src="images/icons/icAgregaCapsulas.png" alt="Elegí tu máquina" class="img-fluid align-self-center">
+                    </div>
+                    <div class="d-flex align-items-center mx-4 my-3 my-sm-0">
+                        <hr class="ec-stepsSeparador">
+                    </div>
+                    <div class="ec-cuerpoElipse d-flex flex-column justify-content-center my-3 my-sm-0">
+                        <span class="ec-stepNumber ec-weight-bold">3</span>
+                        <p class="mb-3"><span class="ec-weight-bold d-block">Recibí $1300</span> de crédito</p> <img src="images/icons/icRecibiCredito.png" alt="Elegí tu máquina" class="img-fluid align-self-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Cierre de modulo completo de Accedo a mi Crédito --> 
+    <div class="ec-container">
+        <!-- Inicio de Packs Recomendados -->
+        <section class="my-4">
+            <div class="row">
+                <div class="col-12 text-center my-5">
+                    <h3>PACKS RECOMENDADOS</h3>
+                </div>
+            </div>
+            <div class="row ec-item d-flex justify-content-center">
+                <div class="col-xs-12 col-sm-4 text-center mb-5">
+                    <img src="images/packs/pack50-200x200.jpg" alt="Nombre" class="img-fluid">
+                    <hr class="my-2 align-self-center">
+                    <h3 class="mt-2">Best Seller</h3>
+                    <span class="caption-text">50 cápsulas</span>
+                    <p class="my-2">ARS <span class="ec-priceNumber">$3.594</span></p>
+                    <div class="d-flex justify-content-center">
+                        <a href="nombre-de-pack" class="ec-boton" data-toggle="modal" data-target="#modal">Más información</a>
+                        <input type="hidden" id="maq_D30-AR-RE-NE" name="maq_D30-AR-RE-NE" value="0">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4 text-center mb-5">
+                    <img src="images/packs/pack100-200x200.jpg" alt="Nombre" class="img-fluid">
+                    <hr class="my-2 align-self-center">
+                    <h3 class="mt-2">Best Seller</h3>
+                    <span class="caption-text">100 cápsulas</span>
+                    <p class="my-2">ARS <span class="ec-priceNumber">$3.594</span></p>
+                    <div class="d-flex justify-content-center">
+                        <a href="nombre-de-pack" class="ec-boton" data-toggle="modal" data-target="#modal">Más información</a>
+                        <input type="hidden" id="maq_D30-AR-RE-NE" name="maq_D30-AR-RE-NE" value="0">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Cierre de Packs Recomendados -->
+        <hr class="my-5">
+        <!-- Inicio de Capsulas -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="d-flex justify-content-start align-items-center">
+                <h2 class="mr-2">Cápsulas</h2>
+                <ul class="nav nav-tabs">
+                    <li class="nav-item" ng-repeat="unaVariedad in variedades">
+                        <a class="nav-link" ng-class="($index == variedadVisible) ? 'active' : ''" ng-click="mostrarVariedad($index)">{{ unaVariedad.nombreVariedad }}</a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        <section class="my-4" style="height: 350px">
+            <div class="row ec-item d-flex justify-content-center">
+                <div class="col-xs-12 col-sm-4 col-md-3 text-center" ng-repeat="unaCapsula in variedades[variedadVisible].capsulas">
+                    <div class="ec-capsulas">
+                        <img src="images/capsulas/capsula-placeholder.png" alt="Nombre">
+                        <hr class="my-2 align-self-center">
+                        <h3 class="mt-2">{{ unaCapsula.nombre }}</h3>
+                        <div class="ec-textoCapsula">
+                            <span class="caption-text d-block">{{ unaCapsula.tipoCafe }}</span>
+                            <span class="caption-text">Intensidad {{ unaCapsula.intensidad }}</span>
+                        </div>
+                        <p class="my-2">ARS <span class="ec-priceNumber">${{ unaCapsula.precio }},<sup>{{ formatearDecimales(unaCapsula.precioSup,2) }}</sup></span></p>
+                        <div class="d-flex justify-content-center">
+                            <a class="ec-boton" ng-click="mostrarModal($index,true)">I</a>
+                            <input type="hidden" id="{{ unaCapsula.ctaCode }}" name="{{ unaCapsula.ctaCode }}" value="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="modal ec-fade-glow" id="modalProducto" tabindex="-1" role="dialog" aria-labelledby="ec-modalProducto" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content contenido-modal">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row mb-3">
+                                <div class="col-xs-12 col-sm-6">
+                                        <div id="vistasProducto" class="carousel slide">
+                                            <div class="carousel-inner">
+                                                <div class="item carousel-item align-self-center" ng-class="($index == 0) ? 'active' : ''" ng-repeat="unaFoto in modalProducto.fotos" data-slide-number="{{$index}}">
+                                                    <img ng-src='{{ unaFoto.urlFoto }}' alt='{{ unaFoto.altFoto }}' />
+                                                </div>
+                                            </div>
+                                                <!-- Indicators -->
+                                            <ol class='carousel-indicators'>
+                                                <li ng-repeat="unaFoto in modalProducto.fotos" data-target='#vistasProducto' data-slide-to='{{$index}}' ng-class="($index == 0) ? 'active' : ''">
+                                                    <img ng-src='{{ unaFoto.urlFoto }}' alt='{{ unaFoto.altFoto }}' />
+                                                </li>
+                                            </ol>
+                                        </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-self-center" id="maquinas">
+                                    <p class="ec-modal-descripcion text-uppercase">{{ modalProducto.tipoProducto }}</p>
+                                    <h2 class="ec-weight-bold">{{ modalProducto.nombreProducto }}</h2>
+                                    <span class="caption-text d-block" ng-show="modalProducto.esCapsula">{{ modalProducto.tipoCafe }}</span>
+                                    <span class="caption-text" ng-show="modalProducto.esCapsula">Intensidad {{ modalProducto.intensidad }}</span>
+                                    <div ng-hide="modalProducto.esCapsula">
+                                    <ul class="mt-2 colorpicker d-flex align-items-center">
+                                        <li>Colores disponibles: </li>
+                                        <li ng-repeat="unColor in modalProducto.colores">
+                                            <a class="{{ unColor.nombreColor }}" ng-click="elegirColor($index)"></a>
+                                        </li>
+                                    </ul></div>
+                                    <hr class="my-3">
+                                    <p class="ec-modal-descripcion">
+                                            {{ modalProducto.descripcion }}
+                                    </p>
+                                    <hr class="my-3" ng-show="modalProducto.esCapsula == false">
+                                    <p class="mb-2" ng-show="modalProducto.esCapsula == false"><span class="d-block ec-weight-bold">ENVÍO GRATUITO</span> 6 CUOTAS sin interés de ${{ modalProducto.cuotas }}</p>
+                                    <p ng-show="modalProducto.esCapsula == false"><span class="d-block">Con tu compra obtené</span> <span class="font-italic">{{ modalProducto.credito }} DE CRÉDITO</span> en café.</p>
+                                    <hr class="my-3">
+                                    <div class="d-flex justify-content-start align-items-center align-items-stretch my-3">
+                                        <!-- Precio Maquina -->
+                                        <div class="align-self-center mr-2" ng-show="modalProducto.esCapsula == false">
+                                            <p>Precio anterior: <span class="ec-pastPrice d-block">${{ modalProducto.precioAnterior}}</span></p>
+                                        </div>
+                                        <div class="ec-vertical-line mx-2" ng-show="modalProducto.esCapsula == false">
+                                        </div>
+                                        <div class="ec-price mx-2" ng-show="modalProducto.esCapsula == false">
+                                            <p class="ec-text-white">ARS <span class="ec-priceNumber">${{ modalProducto.precioProducto }}</span></p>
+                                        </div>
+                                        <!-- Cierre Precio Maquina -->
+                                        <!-- Precio Capsula -->
+                                        <p class="my-2" ng-show="modalProducto.esCapsula">ARS <span class="ec-priceNumber">${{ modalProducto.precioProducto }},<sup>{{ formatearDecimales(modalProducto.precioSup,2) }}</sup></span></p>
+                                        <!-- Cierre Precio Capsula -->
+                                    </div>
+                                    <div class="d-flex align-items-end">
+                                        <input type="hidden" id="{{ modalProducto.codigoCTA }}" name="{{ modalProducto.codigoCTA }}" value="0" ng-show="modalProducto.esCapsula == false">
+                                        <div class="add-to-bag" data-product-id="{{ modalProducto.codigoCTA }}" data-button-size="large" ng-show="modalProducto.esCapsula"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+          </div>
+    <!-- /.container -->
+    <script src="js/jquery331.js"></script>
+    <script src="js/bts.js"></script>
+    <script src="js/angularjs.js"></script>
+    <script src="js/HotSaleApp.js"></script>
+    <script src="js/countdown.js"></script>
+</body>
