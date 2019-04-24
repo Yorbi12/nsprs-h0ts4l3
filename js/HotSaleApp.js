@@ -2,7 +2,6 @@ angular.module('HotSaleApp', [])
 .controller('HotSaleController', ['$scope', 'HotSaleService', function($scope, HotSaleService){
     $scope.maquinaVisible = 0;
     $scope.colorSeleccionado = 0;
-
     $scope.modalProducto = {
         tipoProducto: 'Maquinas',
         nombreProducto: ' ',
@@ -19,7 +18,6 @@ angular.module('HotSaleApp', [])
         codigoCTA: '',
         esCapsula: true
     }
-
     $scope.maquinas = [
         {
             nombre: "Essenza Mini",
@@ -277,7 +275,6 @@ angular.module('HotSaleApp', [])
         }
         $('#modalProducto').modal('show');
     }
-
     $scope.calcularCuotas = function(paraPrecio, enCuotas){
         //return Math.round((paraPrecio / enCuotas), 2)
         return (paraPrecio/enCuotas).toFixed(2);
@@ -303,11 +300,9 @@ angular.module('HotSaleApp', [])
             }
         }
     }
-
     $scope.formatearDecimales = function (number, digits) {
         return Array(Math.max(digits - String(number).length + 1, 0)).join(0) + number;
     }
-
 }])
 .service('HotSaleService', ['$http', function($http){
     var servicioRetorno = {};
