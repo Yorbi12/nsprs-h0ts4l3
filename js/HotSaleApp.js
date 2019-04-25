@@ -2,6 +2,7 @@ angular.module('HotSaleApp', [])
 .controller('HotSaleController', ['$scope', 'HotSaleService', function($scope, HotSaleService){
     $scope.maquinaVisible = 0;
     $scope.colorSeleccionado = 0;
+    $scope.colorSeleccionadoModal = 0;
     $scope.modalProducto = {
         tipoProducto: 'Maquinas',
         nombreProducto: ' ',
@@ -32,14 +33,14 @@ angular.module('HotSaleApp', [])
                     ctaCode: 'maq_D30-AR-RE-NE',
                     fotos: [
                         {
-                            urlFoto: 'images/maquinas/maquina-silver-test.jpg',
+                            urlFoto: 'images/maquinas/maquina-silver-test2.jpg',
                             altFoto: 'Vista 1',
-                            esPortada: false
+                            esPortada: true
                         },
                         {
-                            urlFoto: 'images/maquinas/maquina-silver-test2.jpg',
+                            urlFoto: 'images/maquinas/maquina-silver-test.jpg',
                             altFoto: 'Vista 2',
-                            esPortada: true
+                            esPortada: false
                         },
                         {
                             urlFoto: 'images/maquinas/maquina-silver-test3.jpg',
@@ -58,7 +59,7 @@ angular.module('HotSaleApp', [])
                             esPortada: true
                         },
                         {
-                            urlFoto: 'images/maquinas/maquina-silver-test.jpg',
+                            urlFoto: 'images/maquinas/maquina-silver-test2.jpg',
                             altFoto: 'Vista 2',
                             esPortada: false
                         },
@@ -84,12 +85,12 @@ angular.module('HotSaleApp', [])
                     ctaCode: 'maq_D30-AR-RE-NE',
                     fotos: [
                         {
-                            urlFoto: 'images/maquinas/maquina-silver-test.jpg',
+                            urlFoto: 'images/maquinas/maquina-silver-test2.jpg',
                             altFoto: 'Vista 1',
                             esPortada: true
                         },
                         {
-                            urlFoto: 'images/maquinas/maquina-silver-test2.jpg',
+                            urlFoto: 'images/maquinas/maquina-silver-test.jpg',
                             altFoto: 'Vista 2',
                             esPortada: false
                         },
@@ -288,6 +289,11 @@ angular.module('HotSaleApp', [])
     }
     $scope.elegirColor = function(cual){
         $scope.colorSeleccionado = cual;
+        $scope.colorSeleccionadoModal = cual;
+    }
+    $scope.elegirColorModal = function(cual){
+        $scope.modalProducto.fotos = $scope.maquinas[$scope.maquinaVisible].colores[cual].fotos;
+        $scope.colorSeleccionadoModal = cual;
     }
     $scope.formatearNumero = function (x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");

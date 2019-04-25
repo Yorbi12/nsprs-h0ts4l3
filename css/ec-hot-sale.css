@@ -16,7 +16,6 @@ font-style: normal;
 * {font-family: 'Lucas', 'Trebuchet MS', Helvetica, Arial, sans-serif !important;margin: 0;
 	padding: 0;}
 
-	
 /*!
  * Grid
  * Bootstrap License: MIT (https://github.com/twbs/bootstrap/blob/v4-dev/LICENSE)
@@ -2332,9 +2331,6 @@ font-style: normal;
 	  align-self: stretch !important;
 	}
   }
-
-
-
   .ec-grid .img-fluid {
 	max-width: 100%;
 	height: auto;
@@ -2353,26 +2349,26 @@ font-style: normal;
 
 body {
 	color: #474646;
+	font-size: 1em;
 }
-
 .ec-main-color {
 	color: #ff5000;
 }
-
 .ec-weight-bold {
 	font-weight: bold;
 }
-
+.ec-italic {
+	font-style: italic;
+}
 .ec-text-white {
 	color: #ffffff;
 }
-
-a {
+.ec-container a {
 	color: #474646;
 	text-decoration: none;
 }
 
-a:hover {
+.ec-container a:hover {
 	color: #ff5000;
 	text-decoration: none;
 	cursor: pointer;
@@ -2383,12 +2379,8 @@ a:hover {
 h2 {
 	font-size: 2em;
 	font-weight: 400;
+	line-height: 1.2em;
 }
-
-.font-italic {
-	font-style: italic;
-}
-
 .caption-text {
 	font-size: .8em;
 }
@@ -2410,6 +2402,7 @@ h2 {
 	font-size: 2em;
 	margin-bottom: -10px;
 	font-weight: bold;
+	line-height: 1.2em;
 }
 
 .ec_counter .ec_label{
@@ -2426,6 +2419,7 @@ header.ec-header {
 	background-position: center center;
 	background-size: cover;
 	height: 60vh;
+	margin-top: 20px;
 	}
 	  
 @media (max-width: 768px) {
@@ -2706,7 +2700,8 @@ header.ec-header {
 	font-weight: bold;
 }
 #maquinas .ec-pastPrice {
-	text-decoration: line-through #AAA7A7;
+	text-decoration: line-through ;
+	color: #e70707;
 }
 
 .ec-boton {
@@ -2956,7 +2951,7 @@ sup {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1050;
+  z-index: 2004;
   display: none;
   overflow: hidden;
   outline: 0;
@@ -3114,563 +3109,5 @@ sup {
 no-white {
   margin-top: -20px;
 }
-
-/** header agregado **/
-
-.ResponsiveContainer {
-    margin-bottom: 0!important;
-  
-}
-
-.OrderLinksBanner {
-    background: #000!important;
-}
-
-#main-container {
-    background: #3a3737;
-}
-
-/** footer agregado **/
-
-.crema-ui-container {
-  background-color: #1b1b1b;
-}
-
-
-/*-------------------------------------------
-
-RESPONSIVE
-
----------------------------------------------*/
-@media screen and (min-width:1201px){
-    .titulos{text-align:left!important}
-    .compras-responsive-2 {display: none}
-    .countdown-responsive-2 {display: none}
-    .carrito-agregaste-roja-2 {display: none}
-
-.capsula-modal-limited {
-    left: 45%!important;
-}
-
-}
-
-
-@media screen and (max-width:1200px){
-    .imagenes-taza img{width:70%!important;display: inline-block;float: center;margin-left: 0px!important;margin-top: 40px}
-    .desc-maquina-3 {padding: 30px 45px 30px 45px!important;}
-    .desc-resaltado{margin-top: 20px!important}
-    .desc-capsula-3 {margin: 45px;}
-    .separador-3.sep-responsive{display: none}
-    .compras-responsive-2 {display: none}
-    .countdown-responsive-2 {display: none}
-    .carrito-agregaste-roja-2 {display: none}
-    .sticky-1 {display: block;}
-
-
-}
-
-
-
-@media screen and (max-width:1024px){
-    .capsula-modal{top: 50%!important}
-}
-
-@media screen and (max-width:768px){
-.carrito-agregaste-verde h3{font-size: 18px!important}
-.carrito-agregaste-verde{padding: 10px 0px 10px 0px!important;top: 51px;position: absolute;width: 100vh}
-.desc-capsula-3 {margin: 25px!important;}
-    .separador-3.sep-responsive, .separador-limited{display: none}
-    .titulos{text-align:center!important}
-    .carrito-agregaste-roja {display: none}
-    .carrito-agregaste-roja-2 {display: block}
-    .countdown ul li {
-    text-align: center;
-    display: inline-block;
-    margin-left: 5px!important;
-    font-size: 14px;}
-    .countdown-3 {padding: 5px!important;}
-    .sticky-4{display: none}
-    .btn-carrito {width: 100%!important;margin-bottom: 20px;}
-    .capsula-modal{top: 46%!important;left: 36%!important;}
-
-    .customers td, .customers th { padding:30px 10px !important}
-    .customers td { text-align:center}
-    .customers th:nth-child(1) { width:10% !important}
-    .customers th:nth-child(2) { width:30% !important}
-    .customers th:nth-child(3) { width:0 !important}
-    .customers th:nth-child(4) { width:30% !important}
-    .customers th:nth-child(5) { width:30% !important}
-
-    #my-cart-table { margin-bottom:20px !important}
-    #my-cart-table tr td:nth-child(1) { width:10% !important}
-    #my-cart-table tr td:nth-child(2) { width:0% !important}
-    #my-cart-table tr td:nth-child(3) { width:30% !important; text-align:left !important}
-    #my-cart-table tr td .circle { display:none !important}
-    #my-cart-table tr td:nth-child(4) { width:30% !important}
-    #my-cart-table tr td:nth-child(5) { width:30% !important}
-
-    #my-cart-table tr td:nth-child(5).total-carrito { position:absolute; width:100% !important; left:0 !important; text-align:center !important}
-    #my-cart-table td.total-carrito span { margin:0 5%; display:inline-block}
-
-  }
-
-
-
-@media only screen and (min-width:768px){
-    .sticky-2{display: block}
-}
-
-
-@media screen and (max-width:425px){
-    .imagenes-taza img{width:100%!important;display: inline-block;float: center;margin-left: 0px!important;margin-top: 40px}
-    .desc-resaltado{width: 100vw;margin:0px!important}
-    .maquinas{padding-bottom: 0px!important}
-    .titulos{text-align:center!important}
-    .desc-capsula-3 {margin: 10px!important; width: 43vw;}
-    .slider-responsive-2 {display: block}
-    .slider-responsive-1 {display: none}
-    .compras-responsive-2 {display: block}
-    .nespresso-footer{text-align: center;}
-    .term-cond{text-align: center!important;}
-    .capsula-modal{top: 42%!important}
-
-.carrito-agregaste-verde{padding: 10px 0px 10px 0px!important;top: 70px!important;position: absolute;width: auto!important}
-
-}
-
-@media screen and (min-width:426px){
-    .separadores-1 .separador-responsive-1 {display: none}
-    .slider-responsive-2 {display: none}
-
-}
-
-@media screen and (max-width:767px){
-    .separador-3{display: none}
-    .separador-2{display: none}
-    .compras-responsive-2 {display: block}
-}
-
-.mySlides {display:none}
-.w3-left, .w3-right, .w3-badge {cursor:pointer}
-.w3-badge {height:13px;width:13px;padding:0}
-/*-------------------------------------------
-
-PARTE VERDE
-
----------------------------------------------*/
-
-.carrito-agregaste-verde{background-color:#418200;text-align: center;color: white;padding: 40px 0px 40px 0px}
-.objeto-carrito{font-style: italic;font-weight: 100}
-.check-verde {
-  display: inline;
-  border: 1px solid white;
-  outline: none;
-  color: white;
-    padding: 10px 15px 10px 15px;
- height: 50px;
-    margin-left: 20px;
-  width: 50px;
-  border-radius: 100%;
-}
-
-
-
-.check-verde-2 {
-    display: inline;
-    border: 1px solid white;
-    outline: none;
-    color: white;
-    padding: 20px 15px 20px 15px;
-    height: 50px;
-    margin-left: 20px;
-    width: 50px;
-    border-radius: 100%;
-}
-
-
-
-/*-------------------------------------------
-MODAL CONDICIONES
--------------------------------------------*/
-
-#condiciones .modal-header {
-  border-bottom: 1px solid #000000!important;
-  padding: 1rem!important;
-}
-/*When the modal fills the screen it has an even 2.5% on top and bottom*/
-/*Centers the modal*/
-#condiciones .modal-dialog {
-  margin: 2.5vh auto;
-}
-
-/*Sets the maximum height of the entire modal to 95% of the screen height*/
-#condiciones .modal-content {
-  max-height: 95vh;
-  overflow: scroll;
-
-}
-
-/*Sets the maximum height of the modal body to 90% of the screen height*/
-#condiciones .modal-body {
-  max-height: 90vh;
-  text-align: left;
-  margin:20px;
-  font-size: 0.9em;
-}
-#condiciones .modal-body {
-  overflow-y: auto;
-}
-#condiciones ul, #condiciones ol {
-  margin-left: 20px;
-}
-#condiciones .modal-body ol li {
-  margin-bottom: 10px;
-}
-
-
-
-
-
-
-/*-------------------------------------------
-
-cosas del slider
-
----------------------------------------------*/
-
-/* SLIDER ==============================*/
-
-.flexslider{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-}
-
-.slides,
-.slides li,
-.slides li img{
-  width: 100%;
-}
-
-.slides li{
-  margin-bottom: -5px;
-}
-
-/* PAGINACION =======================*/
-
-.flex-control-nav.flex-control-paging{
-  width: 120px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  list-style: none;
-  position: absolute;
-  bottom: 10px;
-  z-index: 3
-}
-
-.flex-control-nav li{
-  display: inline-block;
-  margin: 0 5px;
-}
-
-.flex-control-nav li a{
-  display: block;
-  width: 15px;
-  height: 15px;
-  border: 1px solid white;  border-radius: 50%;
-  text-indent: -9999px;
-}
-
-.flex-control-nav li a.flex-active{
-  background: #fff;
-}
-
-/* NAVEGACION ===============*/
-.flex-direction-nav{
-  z-index: 3;
-      margin: -6px;
-  list-style: none;
-}
-
-.flex-direction-nav a{
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  margin-top: -30px;
-  transition: all 0.3s ease-in-out;
-}
-
-.flex-direction-nav a::before{
-  content: "\f104";
-    font: normal normal normal 14px/1 FontAwesome;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-
-    font-size: 50px;
-    color: #fff;
-}
-
-.flex-direction-nav a.flex-next::before{
-  content: "\f105";
-}
-
-
-
-/*-------------------------------------------
-
-MAQUINAS
-
----------------------------------------------*/
-
-.maquinas{padding: 40px 0px 40px 0px}
-.titulos{padding-bottom: 30px;color: #fff;font-weight: 700;text-align: left}
-.desc-maquinas{background:#242222;    z-index: 100;
-    position: relative;}
-.desc-maquinas-2{text-align: center;color: #fff}
-.text-lighter{font-weight: 100}
-.desc-resaltado{background: #333333;margin:0px 10px 0px 10px;}
-.desc-maquina-3{padding: 30px 20px 30px 20px;}
-.desc-maquina-3 p{margin: 5px 0px 5px 0px}
-.desc-maquina-3 a{color: white;font-size: 16px;text-decoration: underline;}
-.desc-maquina-3 a:hover {color: #4F4F4F;font-size: 16px;text-decoration: underline;}
-.precio{background: #C50303;padding: 0px 6px 0px 6px;text-align: center;font-weight: 700;font-size: 20px;border-radius: 5px;
-}
-.desc-maquina-3 img{width: 230px}
-
-
-
-/*-------------------------------------------
-
-CAPSULAS
-
----------------------------------------------*/
-
-.capsulas{padding: 40px 0px 40px 0px}
-.capsulas h5{padding-bottom: 30px;color: #fff;font-weight: 700;text-align: center}
-.desc-capsulas{background:#121210;position: relative;}
-.precio-clean{text-align: center;font-weight: 700;font-size: 20px;border-radius: 5px; margin: 20px 0px 20px 0px;}
-.desc-capsula-3 img{width: 120px}
-.separador{width: 100%;text-align: center;float: center;border-top: 1px solid #000000;border-bottom: 1px solid #212121;}
-.separadores-1{padding: 20px 0px 50px 0px}
-.titulo-capsula{font-weight: 500;text-transform: uppercase;font-size:18px;margin:30px 0px 0px 0px}
-.capsula-2{font-weight: 500;font-size: 16px;}
-.capsula-3{font-weight: 500;font-size: 12px;color: #656565;text-transform: uppercase;font-style: italic}
-.capsulas-unidad{margin: 0px 0px 60px 0px}
-.desc-capsulas-2{text-align: center;color: #fff}
-.separador-2{border: none;
-    border-right: 1px solid #000000;
-    border-left: 1px solid #212121;
-    height: 1650px;
-    margin-left: 5px;
-    width: 1px;
-    margin-right: 5px;
-    margin-top: 33px;  }
-.separador-3{border: none;
-    border-right: 1px solid #000000;
-    border-left: 1px solid #212121;
-    height: 1315px;
-    margin-left: 5px;
-    width: 1px;
-    margin-right: 5px;
-    margin-top: 33px;  }
-.separador-limited{border: none;
-    border-right: 1px solid #000000;
-    border-left: 1px solid #212121;
-    height: 650px;
-    margin-left: 5px;
-    width: 1px;
-    margin-right: 5px;
-    margin-top: 33px;  }
-
-.titulo-capsula {
-  font-size: 1em;
-}
-/*--nespresso css--*/
-
-
-.ProductListElement__intensity-block {
-    width: 5px;
-    height: 5px;
-    margin-right: -2px;
-    border: 1px solid #656565;
-}
-
-.ProductListElement__current-intensity, .ProductListElement__intensity-block {
-    display: inline-block;
-    font-size: 12px;
-}
-
-
-element.style {
-}
-.crema-ui-container * {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-}
-.ProductListElement__intensity-block--filled {
-    background-color: #656565;
-}
-
-/*-------------------------------------------
-
-TAZAS
-
----------------------------------------------*/
-
-.imagenes-taza img{width:45%;display: inline-block;float: center;margin-left: 50px;margin-top: 40px}
-.imagenes-taza{text-align: center}
-
-
-
-#my-cart-table.customers tr:last-child td:nth-child(5) { padding:30px 20px 30px 0}
-.my-product-quantity {}
-
-#my-cart-table.customers tr:nth-child(even) .circle { background-color:#242222}
-.total-carrito span { font-weight:700; font-size:18px}
-
-.customers th {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    text-align: left;
-    color: white;
-}
-
-.total-carrito{text-align: right;color:white}
-.total-carrito-responsive{text-align: center;color:white}
-
-.total-carrito h5{font-weight: 700;margin-bottom: 26px}
-.carrito{padding-bottom: 100px}
-.precio-carrito{font-weight: 700;font-size: 18px}
-
-
-
-
-.customers-responsive {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 50px;
-}
-
-.customers-responsive td, .customers-responsive th {
-    padding: 10px;
-}
-.customers-responsive td p{
-margin: 0;
-    color: white
-}
-
-.customers-responsive th {
-        border-bottom: 2px solid #9C9C9C;
-
-    padding-top: 40px;
-    padding-bottom: 40px;
-    text-align: left;
-    color: white;
-}
-.btn-carrito {
-    padding: 10px 0px 10px 0px;
-    background-color: #537f1e;
-    color: white;
-    border-radius: 2px;
-    width: 130px;
-    text-align: center;
-    font-weight: 600;
-    float: right;
-}
-
-
-.mySlides {display:none}
-.demo {cursor:pointer}
-
-.btn-carrito a:visited {
-    text-decoration: none;
-    color: white!important;
-}
-
-.btn-carrito a:active {
-    text-decoration: none;
-    color: white!important;
-}
-.btn-carrito a {
-    text-decoration: none!important;;
-    color: white!important;;
-}
-
-
-
-.btn-carrito-2 {
-    padding: 10px 0px 10px 0px;
-    /*background-color: #537f1e; */
-    color: white;
-    border-radius: 2px;
-    border: none;
-    width: 100%;
-    text-align: center;
-    font-weight: 600;
-}
-
-
-.btn-carrito-2 a:visited {
-    text-decoration: none;
-    color: white!important;
-}
-
-.btn-carrito-2 a:active {
-    text-decoration: none;
-    color: white!important;
-}
-.btn-carrito-2 a {
-    text-decoration: none!important;;
-    color: white!important;;
-}
-
-@media screen and (max-width:440px) {
-  body {
-    overflow-x:visible;
-  }
-
-  .benef {
-    width: 100vw;
-    flex-direction: row;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .separadores-1 {
-    padding:0;
-  }
-
-  .rojo-fixed {
-    top:27px!important;
-  }
-
-
-  .flexslider ol {
-    display: none!important;
-  }
-
-  .titulos span {
-    display: block;
-    text-align:center;
-  }
-
-  .customers-responsive th, .customers-responsive td {
-    text-align:center;
-  }
-}
-
-
-
-.maquina-opacity,.maquina--hover-opacity:hover{opacity:0.60}.maquina-opacity-off,.maquina-hover-opacity-off:hover{opacity:1}
 .btn-modal {background-color: #c70000;padding: 10px 30px 10px 30px;margin: 20px 0px 20px 0px;border-radius: 2px;}
 .btn-modal:hover {background-color: #9a1817; cursor: pointer;}
-
